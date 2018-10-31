@@ -1,4 +1,4 @@
-package endpoint;
+package endpoint.config;
 
 import com.google.inject.Binder;
 import com.google.inject.Module;
