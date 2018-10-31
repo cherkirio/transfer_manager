@@ -1,3 +1,6 @@
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import endpoint.Config;
 import endpoint.Server;
 
 /**
@@ -7,7 +10,9 @@ public class Main {
 
 
     public static void main(String... args) {
+        Injector injector = Guice.createInjector(new Config());
         Server server = new Server();
+        injector.injectMembers(server);
         server.init();
     }
 }

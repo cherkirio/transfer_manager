@@ -1,11 +1,18 @@
 package model;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 /**
  * Created by kirio on 29.10.2018.
  */
+
+
+@Entity(name = "Account")
+@Table(name="account")
 public class Account {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private BigDecimal balance;
 
