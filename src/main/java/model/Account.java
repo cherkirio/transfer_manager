@@ -1,22 +1,25 @@
 package model;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Created by kirio on 29.10.2018.
  */
 
 
-@Entity(name = "Account")
-@Table(name="account")
 public class Account {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     private long id;
     private BigDecimal balance;
 
     public Account() {
+    }
+
+
+    public Account(Account account) {
+        this(account.id, account.getBalance());
     }
 
     public Account(long id, BigDecimal balance) {
@@ -39,4 +42,6 @@ public class Account {
     public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
+
+
 }

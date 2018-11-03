@@ -1,6 +1,6 @@
-package endpoint.util;
+package server;
 
-import model.BadParamException;
+import model.exception.BadParamException;
 import spark.Request;
 
 import javax.annotation.Nonnull;
@@ -30,7 +30,7 @@ public interface RequestUtil {
         try {
             return Long.parseLong(value);
         } catch (Exception ex) {
-            throw new BadParamException(String.format("invalid path param"));
+            throw new BadParamException("path param " + paramName + " is invalid");
         }
     }
 }

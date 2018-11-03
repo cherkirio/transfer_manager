@@ -1,15 +1,27 @@
 package service;
 
 import model.Account;
+import model.TransferTransaction;
 
+import javax.annotation.Nonnull;
 import java.math.BigDecimal;
-import java.util.Collection;
 
 /**
  * Created by kirio on 31.10.2018.
  */
 public interface IAccountService {
-    Account create(BigDecimal balance);
+
+    Account create(@Nonnull BigDecimal balance);
+    default Account create(double balance) {
+        return this.create(BigDecimal.valueOf(balance));
+    }
+
     Account get(long id);
-    Collection<Account> getAll();
+
+    TransferTransaction transfer(long from_id, long to_id, BigDecimal amount);
+
+    default TransferTransaction transfer(long from_id, long to_id, double amount) {
+        return transfer(from_id, to_id, BigDecimal.valueOf(amount));
+    }
+
 }

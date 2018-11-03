@@ -6,9 +6,6 @@
         </encoder>
     </appender>
 
-
-
-    <logger name="org.hibernate" level="DEBUG"/>
     <logger name="org.eclipse" level="INFO"/>
     <root level="INFO">
         <appender-ref ref="STDOUT" />
