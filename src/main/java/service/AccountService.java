@@ -61,13 +61,13 @@ public class AccountService implements IAccountService {
 
         // for a sake of simplicity: this method will wait until transfer operation finished and write lock released
         // there is another way for implementing this method for returning snapshot account value without waiting
-        // (but this require change transfer and this methods)
+        // (but it requires to change this and 'transfer' methods)
         Lock readLock = stripedLock.get(id).readLock();
         LockUtil.lockOrThrow(readLock, readTimeout);
 
         try {
             Account account = dataStore.get(id);
-            // Return copy of account
+            // Return copy of account (for excluding changes in dataStore through account)
             return account == null ? null : new Account(account);
 
         } finally {
